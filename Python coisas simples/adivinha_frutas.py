@@ -31,13 +31,13 @@ else:
         if voce=="MACA" or voce=="MACÃ" or voce=="MAÇA":
             voce="MAÇÃ"
         a=a-1
-        if a==2:
-            print("Você perdeu")
-            c=False
-        elif voce==opcaoe:
+        
+        if voce==opcaoe:
             print(f"Acertou!!!! em {tentativa} tentativa(s)")
             c=False
-    
+        elif a==2:
+            print("Você perdeu")
+            c=False
 
     
 

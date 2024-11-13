@@ -395,7 +395,7 @@ def Apresentacao():
        x = 0
        try:
             #Sistema Operacional Windows
-            x= 1 if system("start https://youtu.be/IhPMfGh4K7A") == True else 2
+            x= 1 if system("start https://www.youtube.com/watch?v=sGAPxrLVxZQ") == True else 2
             #o if está voltando com False
             if x == 2:
                   sleep(20)
@@ -403,13 +403,13 @@ def Apresentacao():
        except: 
             try:
               #Sistema Operacional Linux
-              x= 1 if system("xdg-open https://youtu.be/IhPMfGh4K7A") == True else 2
+              x= 1 if system("xdg-open https://www.youtube.com/watch?v=sGAPxrLVxZQ") == True else 2
               if x == 2:
                   sleep(20)
                   Body.chamarJanela()
             except:
                #sistema operacional macOS
-               x= 1 if system("open https://youtu.be/IhPMfGh4K7A") == True else 2
+               x= 1 if system("open https://www.youtube.com/watch?v=sGAPxrLVxZQ") == True else 2
                if x == 2:
                   sleep(20)
                   Body.chamarJanela()

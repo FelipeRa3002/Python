@@ -463,7 +463,7 @@ class LojaShopping:
 
 
 if __name__ == "__main__":
-    resultado = messagebox.askyesnocancel("Confirmation", "Cancelar vai abrir a apresentação e depois de 20 segundos vai abrir a versão com interface gráfica\nVocê deseja usar uma interface gráfica? ")
+    resultado = messagebox.askyesnocancel("Confirmation", "Cancelar vai abrir um vídeo de amv no Youtube e depois de 20 segundos vai abrir a versão com interface gráfica\nVocê deseja usar uma interface gráfica? ")
     if resultado is True:
       chamarJanela()
     elif resultado is False:

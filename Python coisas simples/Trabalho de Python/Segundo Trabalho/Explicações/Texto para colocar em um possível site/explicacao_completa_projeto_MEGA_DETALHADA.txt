@@ -1,0 +1,268 @@
+SISTEMA DE GERENCIAMENTO DE ALUNOS EM PYTHON
+
+================================================================================
+INTRODUÇÃO EXTREMAMENTE DETALHADA
+================================================================================
+
+Este documento apresenta uma documentação EXAUSTIVA, didática e técnica do Sistema de Gerenciamento de Alunos desenvolvido em Python. O objetivo central do projeto é permitir o gerenciamento completo de informações acadêmicas de alunos, incluindo cadastro, consulta, atualização, exclusão e geração de relatórios persistentes.
+
+O sistema foi desenhado com foco educacional, visando consolidar conhecimentos fundamentais de programação estruturada, tais como:
+
+- Uso de funções para organização do código
+- Modularização em múltiplos arquivos
+- Manipulação de listas e dicionários
+- Controle de fluxo com estruturas condicionais e laços
+- Entrada e saída de dados pelo terminal
+- Persistência simples de dados em arquivos
+- Uso de variáveis globais de forma controlada
+
+================================================================================
+VISÃO GERAL DA ARQUITETURA DO PROJETO
+================================================================================
+
+O projeto está organizado em três arquivos principais, cada um com uma responsabilidade clara:
+
+1) corpo.py
+   - Arquivo de inicialização do sistema
+   - Responsável apenas por iniciar o programa
+
+2) dados.py
+   - Unidade de armazenamento de dados
+   - Guarda a lista de alunos e a soma das médias da turma
+   - Funciona como um "banco de dados" simples
+
+3) funções.py
+   - Núcleo lógico do sistema
+   - Contém TODAS as funções responsáveis pela execução do programa
+
+Essa separação segue princípios básicos de engenharia de software, como separação de responsabilidades e coesão.
+
+================================================================================
+ANÁLISE COMPLETA DO ARQUIVO corpo.py
+================================================================================
+
+O arquivo corpo.py é o ponto de entrada da aplicação.
+
+Ele possui um papel extremamente importante, apesar de conter poucas linhas de código. Sua função não é processar dados, mas controlar quando o sistema deve ser iniciado.
+
+Principais pontos:
+
+- Importa o módulo funções
+- Utiliza a estrutura if __name__ == '__main__'
+
+Essa estrutura é essencial em Python pois garante que o código será executado apenas quando o arquivo for rodado diretamente. Caso o arquivo seja importado em outro projeto, o menu principal não será executado automaticamente.
+
+Ao chamar a função Menu(), o controle total do programa passa para o arquivo funções.py.
+
+================================================================================
+ANÁLISE COMPLETA DO ARQUIVO dados.py
+================================================================================
+
+O arquivo dados.py tem como responsabilidade exclusiva o armazenamento e a persistência dos dados do sistema.
+
+VARIÁVEIS DECLARADAS:
+
+1) listadaTurma
+
+- Tipo: lista
+- Função: armazenar todos os alunos cadastrados
+- Cada elemento da lista é um dicionário
+
+Estrutura de cada dicionário:
+
+{
+  'nome': string,
+  'nota1': float,
+  'nota2': float,
+  'media': float,
+  'situação': string
+}
+
+Essa estrutura permite acesso rápido e organizado às informações de cada aluno.
+
+2) mediadaTurmaDefinitiva
+
+- Tipo: float
+- Função: armazenar a SOMA das médias de TODOS os alunos
+
+Essa variável é fundamental para o cálculo eficiente da média geral da turma.
+
+IMPORTANTE:
+
+O arquivo dados.py é reescrito automaticamente pela função Relatorio(), o que permite que os dados persistam mesmo após o encerramento do programa.
+
+================================================================================
+ANÁLISE COMPLETA DO ARQUIVO funções.py
+================================================================================
+
+Este arquivo concentra toda a inteligência do sistema.
+
+IMPORTAÇÕES:
+
+- datetime: para registro de data
+- os.system: para limpeza do terminal
+- os.getlogin: para capturar o usuário do sistema
+- dados: para acessar as variáveis globais compartilhadas
+
+Além disso, a variável mediadaTurma é criada como espelho da mediadaTurmaDefinitiva, permitindo controle da soma das médias durante a execução.
+
+================================================================================
+FUNÇÃO limpa()
+================================================================================
+
+Objetivo:
+- Limpar a tela do terminal
+
+Implementação:
+- Utiliza system('cls'), comando específico para Windows
+
+Essa função melhora a legibilidade da interface e evita poluição visual causada por informações antigas na tela.
+
+================================================================================
+FUNÇÃO Inclusao()
+================================================================================
+
+Objetivo:
+- Cadastrar um novo aluno
+
+DETALHAMENTO DO PROCESSO:
+
+1) Limpa a tela
+2) Exibe mensagem explicativa
+3) Solicita o nome do aluno
+4) Solicita a nota da primeira avaliação
+5) Solicita a nota da segunda avaliação
+6) Calcula a média aritmética simples
+7) Avalia a situação do aluno:
+   - Média >= 6  → APROVADO
+   - Média < 6   → REPROVADO
+8) Soma a média do aluno à variável mediadaTurma
+9) Cria um dicionário com os dados
+10) Armazena o dicionário dentro da listadaTurma
+
+Essa função integra conceitos de entrada de dados, cálculo, decisão lógica e armazenamento estruturado.
+
+================================================================================
+FUNÇÃO Consultar()
+================================================================================
+
+Objetivo:
+- Consultar dados previamente cadastrados
+
+OPÇÕES DISPONÍVEIS:
+
+1) Consulta por nome:
+   - Percorre a lista
+   - Localiza o aluno
+   - Exibe todas as informações formatadas
+
+2) Consulta por situação:
+   - Percorre toda a lista
+   - Filtra alunos APROVADOS ou REPROVADOS
+   - Exibe os nomes
+   - Calcula a média geral da turma
+
+Essa função demonstra uso avançado de laços, listas auxiliares, condicionais e formatação de saída.
+
+================================================================================
+FUNÇÃO Relatorio(x)
+================================================================================
+
+Objetivo:
+- Gerar relatórios
+- Garantir persistência de dados
+
+COMPORTAMENTO CONFORME PARÂMETRO x:
+
+x == 'txt':
+- Cria o arquivo Relatório.txt
+- Registra data, usuário
+- Lista cada aluno com notas, média e situação
+- Exibe a média geral da turma
+
+x == 'python':
+- Reescreve o arquivo dados.py
+- Salva os dados em formato de código Python
+- Permite reutilização automática dos dados ao reiniciar o programa
+
+Esta função é uma das mais complexas do sistema, envolvendo escrita em arquivos e integração com o sistema operacional.
+
+================================================================================
+FUNÇÃO AtualizarDado()
+================================================================================
+
+Objetivo:
+- Atualizar informações de alunos existentes
+
+PASSOS:
+
+1) Lista todos os alunos
+2) Permite selecionar um aluno por índice
+3) Permite escolher o campo a ser alterado
+4) Atualiza o valor
+5) Recalcula a média do aluno
+6) Ajusta corretamente a mediadaTurma
+
+Essa função garante integridade dos dados, evitando inconsistências na média da turma.
+
+================================================================================
+FUNÇÃO Apagar(x)
+================================================================================
+
+Objetivo:
+- Remover dados
+
+MODOS DE OPERAÇÃO:
+
+x == 0:
+- Remove apenas um aluno
+- Ajusta a soma das médias
+
+x == 1:
+- Limpa toda a base de dados
+
+O controle cuidadoso da variável mediadaTurma evita erros estatísticos no sistema.
+
+================================================================================
+FUNÇÃO Menu()
+================================================================================
+
+Objetivo:
+- Controlar todo o fluxo do sistema
+
+IMPLEMENTAÇÃO:
+
+- Loop infinito while True
+- Exibe menu de opções
+- Direciona para a função correspondente
+- Encerra o programa apenas quando o usuário escolhe a opção Sair
+
+Esta função funciona como um controlador central, conectando todas as partes do sistema.
+
+================================================================================
+INTEGRAÇÃO COM OS DOCUMENTOS PDF
+================================================================================
+
+Os dois arquivos PDF fornecidos descrevem com precisão:
+
+- Objetivo educacional do sistema
+- Arquitetura modular
+- Descrição das funções
+- Tecnologias utilizadas
+- Potenciais extensões futuras
+
+O código implementado corresponde fielmente à documentação, demonstrando coerência entre teoria e prática.
+
+================================================================================
+CONCLUSÃO TÉCNICA FINAL
+================================================================================
+
+Este projeto representa um excelente exemplo de sistema educacional em Python. Ele demonstra domínio de lógica de programação, organização de código, manipulação de dados e persistência simples.
+
+Com pequenas adaptações, o sistema poderia evoluir para:
+
+- Interface gráfica
+- Banco de dados
+- Aplicação web
+
+Esta documentação serve como material de estudo, relatório técnico e base para evoluções futuras do projeto.

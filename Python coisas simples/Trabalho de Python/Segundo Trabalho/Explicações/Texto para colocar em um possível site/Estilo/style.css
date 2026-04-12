@@ -1,0 +1,110 @@
+/*fontes do google*/
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double&family=Fleur+De+Leah&family=Saira+Stencil&display=swap');
+:root{
+    /*Paleta de cores para o site com base na imagem da https://i.pinimg.com/236x/04/5c/2d/045c2d9fae3b50fd44e28d106d5aa161.jpg , 
+    uma personagem de Boku no Kokoro chamada de Anna Yamada
+    música https://youtu.be/A0tKGpKOU4Y?si=PXdT-hiJF2uyk9fK*/
+    /*  Primário: O primeiro ou fundamental.
+        Secundário: O segundo ou derivado.
+        Terciário: O terceiro ou complementar.
+        Quaternário: O quarto nível.
+        Quinário: O quinto nível.
+        Senário: O sexto nível.
+        Setenário: Sétimo nível / relativo a sete.
+        Octonário: Oitavo nível / relativo a oito.
+        Novenário: Nono nível / relativo a nove.
+        Decenário: Décimo nível / relativo a dez.
+        Undecenário: Décimo primeiro nível / relativo a onze.  */
+    /* Use !important para garantir que vença o Bootstrap */
+   --cor-principal: #2F3540;
+   --cor-secundario: #515559;
+   --cor-terciario: #267341;
+   --cor-quaternario: #365942;
+   --cor-quinario: #F2F2F2;
+   --cor-senário: #BF5B21;
+   --cor-setenário: #591B04;
+   --cor-octonário: #BF9663;
+   --cor-novenário:#3B668C;
+   --cor-decenário:#272A59;
+   --fonte-principal: "Saira Stencil", sans-serif;
+   --fonte-secundario: "Bitcount Grid Double", system-ui;
+   --fonte-texto-comum: "Fleur De Leah", cursive;
+}
+.inicio{
+    background-color: var(--cor-principal) !important; /* Use !important para garantir que vença o Bootstrap */
+    color: var(--cor-terciario);
+    
+}
+#MenuHeader{
+    padding: 0px 0px !important;
+
+}
+.link{
+    color: var(--cor-novenário);
+}
+.link:hover{
+    
+    color: var(--cor-quinario)
+}
+.conteudo-texto-geral{
+    background-color: var(--cor-secundario) !important;
+    color: var(--cor-quinario)
+}
+.centro{
+   display: flex !important;
+   justify-content: center!important;
+   align-items: center!important;
+   text-align: center!important;
+   width: 100%;
+
+}
+/*Aba Funções*/
+.conteudo-texto-botoes{
+    background-color: var(--cor-novenário) !important;
+    color: var(--cor-quinario)
+ }
+.conteudo-texto-detalhes{
+    background-color: var(--cor-decenário);
+    color: var(--cor-terciario)!important;
+}
+/*fim da aba funções*/
+/*ínicio da configurações das fontes*/
+.card-title, h4.texto-importante,h2.texto-importante{
+    font-family: var(--fonte-principal);
+    color: var(--cor-decenário)
+}
+.card-body p{
+    font-family: var(--fonte-texto-comum);
+    font-size: 2em;
+    color: var(--cor-octonário);
+}
+.card-body ul{
+    font-family: var(--fonte-secundario);
+    font-size: 1.2em;
+    color: var(--cor-terciario);
+}
+.texto-importante{
+    font-family: var(--fonte-principal);
+}
+.espaco{
+    margin-bottom: 1.8em;
+}
+strong{
+    color: var(--cor-senário);
+}
+/*fim da configurações das fontes*/
+/*fundo para tela pequena*/
+@media screen and (max-width: 1049px) {
+  .fundo-do-conteudo {
+    background-color: var(--cor-quaternario)!important;
+  }
+}
+/*tela grande*/
+@media screen and (min-width: 1050px) {
+    .fundo-do-conteudo{
+    background: url(../Imagens/fundo2.gif) no-repeat  !important;
+    background-size:  cover !important;
+    
+}
+    
+}

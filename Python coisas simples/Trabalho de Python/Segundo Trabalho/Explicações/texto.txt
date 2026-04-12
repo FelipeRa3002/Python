@@ -1,0 +1,60 @@
+Se eu precisar colocar em html no futuro kkkkkkkk
+
+"<iframe src="https://gamma.app/embed/uq9269gy98yjs8y" style="width: 700px; max-width: 100%; 
+height: 450px" allow="fullscreen" title="Sistema de Gerenciamento de Alunos em Python"></iframe>"
+
+PHP
+
+<?php
+// 1. O conteúdo do seu script Python
+$codigoPython = "
+# Relatório Blue Lock
+data = '2023-10-27'
+user = 'Admin'
+print(f'Relatório gerado em {data} por {user}')
+";
+
+// 2. Nome que o arquivo terá ao ser baixado
+$nomeArquivo = "relatorio_bluelock.py";
+
+// 3. Configura os cabeçalhos para o navegador entender que é um download
+header('Content-Description: File Transfer');
+header('Content-Type: text/x-python'); // Define o tipo como script Python
+header('Content-Disposition: attachment; filename="' . $nomeArquivo . '"');
+header('Expires: 0');
+header('Cache-Control: must-revalidate');
+header('Pragma: public');
+header('Content-Length: ' . strlen($codigoPython));
+
+// 4. "Imprime" o código. Como os headers de download estão ativos, 
+// o navegador baixará o que for impresso em vez de exibir na tela.
+echo $codigoPython;
+exit;
+?>
+
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recebendo os dados via POST (os nomes vêm do atributo 'name' do HTML)
+    $nome  = $_POST['nome'];
+    $nota1 = floatval($_POST['nota1']);
+    $nota2 = floatval($_POST['nota2']);
+
+    // Exemplo de lógica: calcular média
+    $media = ($nota1 + $nota2) / 2;
+
+    echo "<h1>Dados Recebidos!</h1>";
+    echo "Aluno: " . htmlspecialchars($nome) . "<br>";
+    echo "Média: " . number_format($media, 2);
+    
+    // Aqui você poderia salvar no Banco de Dados
+}
+?>
+
+if ($acao == "finalizar") {
+        // Se clicou em Finalizar, chama sua função específica
+        funcaoFinalizarSistema();
+        echo "Sistema Finalizado com sucesso!";
+    }
+function salvarNoBanco($n, $n1, $n2) { /* sua lógica aqui */ }
+function funcaoFinalizarSistema() { /* sua lógica aqui */ }

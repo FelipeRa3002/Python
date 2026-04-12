@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Gerenciamento de Alunos em Python</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--https://youtu.be/A0tKGpKOU4Y?si=d2ZgQNJQhUmcviCo-->
+    <!--Feito com o bootstrap-->
+    
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+     rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="Estilo/style.css">
+    <link rel="shortcut icon" href="Imagens/kaiser.webp" type="image/x-icon">
+    <!--Para rodar o python-->
+    <script type="module" src="https://pyscript.net/releases/2026.3.1/core.js"></script>
+    <script>
+    const navLinks = document.querySelectorAll('ul a.link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const targetPosition = target.offsetTop - headerHeight - 20;
+            window.scrollTo({
+             top: targetPosition,
+                behavior: 'smooth'
+      });
+    }
+  });
+});
+    </script>
+</head>
+
+<body class="bg-light fundo-do-conteudo">
+
+    <!-- HEADER -->
+    <header class="bg-dark  text-white py-5 mb-4 inicio" id="MenuHeader">
+         <!--Menu de navegação Feito pelo bootstrap-->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary inicio"  id="meuNav" style="display: flex;">
+            <div class="container-fluid" style="flex-direction: column !important;">
+                        <a class="navbar-brand" href="#" style="display: flex; justify-content: center; width: 100%;">Projeto de python da Faculdade</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <!--Essa div é para deixar no centro o nav home etc.-->
+                        <div class="collapse navbar-collapse centro" id="navbarNav">
+                        <ul class="navbar-nav" id="Menu">
+                            <li class="nav-item">
+                            <a class="nav-link active link" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link link" href="#arquitetura">Arquitetura do Sistema</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link link" href="#dados">Dados</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link  link" href="#funcoes">Funções</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link  link" href="#documentacao">Documentação</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link  link" href="#base_de_dados">Cadastro</a>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+        </nav>
+    </header>
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container mb-5">
+
+        <!-- INTRODUÇÃO -->
+        <section class="card shadow-sm mb-4 conteudo-texto-geral">
+
+            <div class="card-body">
+            <div class="container text-center inicio" style="background-color: #515559 !important;">
+            <h1 class="fw-bold inicio texto-importante" style="background-color: #515559 !important;">Sistema de Gerenciamento de Alunos em Python</h1>
+            <p class="lead">
+                Documentação técnica e explicação detalhada do projeto
+            </p>
+            </div>
+                <h2 class="card-title">Introdução</h2>
+
+                <p>
+                    Este projeto consiste em um Sistema de Gerenciamento de Alunos desenvolvido em Python,
+                    com foco educacional e didático.
+                </p>
+
+                <p>
+                    O objetivo principal é demonstrar domínio prático de conceitos fundamentais de
+                    programação estruturada, organização de código e manipulação de dados.
+                </p>
+
+                <h5 class="texto-importante">Conceitos aplicados</h5>
+                <ul>
+                    <li>Modularização do código</li>
+                    <li>Uso extensivo de funções</li>
+                    <li>Manipulação de listas e dicionários</li>
+                    <li>Estruturas condicionais e laços</li>
+                    <li>Entrada e saída de dados pelo terminal</li>
+                    <li>Persistência de dados em arquivos</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ARQUITETURA -->
+        <section class="card shadow-sm mb-4 conteudo-texto-geral" id="arquitetura">
+            <div class="card-body">
+                <h2 class="card-title">Arquitetura do Sistema</h2>
+
+                <p>
+                    A arquitetura do projeto é modular e segue o princípio da separação de responsabilidades.
+                </p>
+
+                <ul>
+                    <li><strong>corpo.py</strong>: ponto de entrada da aplicação</li>
+                    <li><strong>dados.py</strong>: armazenamento e persistência dos dados</li>
+                    <li><strong>funções.py</strong>: lógica e regras do sistema</li>
+                </ul>
+            </div>
+
+
+        <!-- corpo.py -->
+            <div class="card-body">
+                <h2 class="card-title">Detalhamento do arquivo corpo.py</h2>
+
+                <p>
+                    O arquivo <strong>corpo.py</strong> é responsável por iniciar o sistema,
+                    utilizando a estrutura <code>if __name__ == "__main__"</code>.
+                </p>
+
+                <p>
+                    Ele chama a função <strong>Menu()</strong>, transferindo o controle para
+                    o arquivo <strong>funções.py</strong>.
+                </p>
+            </div>
+        </section>
+
+        <!-- dados.py -->
+        <section class="card shadow-sm mb-4 conteudo-texto-geral" id="dados">
+            <div class="card-body">
+                <h2 class="card-title">Detalhamento do arquivo dados.py</h2>
+
+                <p>
+                    O arquivo <strong>dados.py</strong> funciona como a camada de dados do sistema.
+                </p>
+
+                <h5 class="texto-importante">Estruturas utilizadas</h5>
+                <ul>
+                    <li>
+                        <strong>listadaTurma</strong>: lista de dicionários com dados dos alunos
+                    </li>
+                    <li>
+                        <strong>mediadaTurmaDefinitiva</strong>: soma das médias da turma
+                    </li>
+                </ul>
+
+                <p>
+                    Esse arquivo é reescrito automaticamente, garantindo a persistência dos dados.
+                </p>
+            </div>
+        </section>
+
+        <!-- funções.py -->
+     <section class="card shadow-sm mb-4 conteudo-texto-geral" id="funcoes">
+        <div class="card-body">
+            <h2 class="card-title mb-4">Detalhamento do arquivo funções.py</h2>
+
+            <p>Este arquivo representa o núcleo do sistema, contendo todas as regras de negócio.</p>
+
+            <h5 class="texto-importante">Principais funções</h5>
+            
+            <!-- Início do Accordion -->
+            <div class="accordion accordion-flush" id="accordionFuncoes">
+                
+                <!-- Item: limpa() -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed conteudo-texto-botoes" type="button" data-bs-toggle="collapse" data-bs-target="#flush-limpa">
+                            <strong>Limpa()</strong>: Limpa o terminal
+                        </button>
+                    </h2>
+                    <div id="flush-limpa" class="accordion-collapse collapse" data-bs-parent="#accordionFuncoes">
+                        <div class="accordion-body text-muted conteudo-texto-detalhes">
+                            <h6>limpa o terminal (ex: utiliza o comando no Windows 'cls' ou no Linux'clear').</h6>
+                            <p>
+                                A função <code>limpa()</code> é um subprograma criado para organizar a interface do usuário no terminal,
+                                tendo como único objetivo apagar todo o texto exibido anteriormente e posicionar o
+                                cursor de escrita de volta ao topo da tela. Estruturalmente, ela utiliza a palavra-chave
+                                <code>def</code> para declarar o bloco de código e executa internamente o comando system("cls"),
+                                que envia uma instrução direta ao sistema operacional Windows (o comando Clear Screen)
+                                para limpar o console (CMD ou PowerShell). Para que essa função opere corretamente, é
+                                necessário que a biblioteca os tenha sido previamente importada no código, sendo uma
+                                ferramenta essencial em menus interativos para manter o programa visualmente limpo e
+                                evitar o acúmulo de informações irrelevantes na tela do usuário.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item: Inclusao() -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed conteudo-texto-botoes" type="button" data-bs-toggle="collapse" data-bs-target="#flush-inclusao">
+                            <strong>Inclusao()</strong>: Cadastra alunos
+                        </button>
+                    </h2>
+                    <div id="flush-inclusao" class="accordion-collapse collapse" data-bs-parent="#accordionFuncoes">
+                        <div class="accordion-body text-muted conteudo-texto-detalhes">
+                            <h6>Validação de dados e inserção no banco de dados.</h6>
+                            <p>
+                                Este trecho de código representa uma função de cadastro e processamento de dados acadêmicos,
+                                projetada para registrar o desempenho de um aluno e armazená-lo em uma lista global.
+                                A execução inicia limpando a tela para organizar a interface, solicitando em seguida o
+                                nome e as duas notas do estudante através de entradas coloridas (ANSI escape codes)
+                                para melhorar a legibilidade no terminal. Internamente, o código realiza o cálculo aritmético da
+                                média e utiliza uma estrutura condicional simplificada (if ternário) para definir a situação do aluno
+                                como "APROVADO" (em azul) ou "REPROVADO" (em vermelho), adotando o critério de nota igual ou superior
+                                a 6. O script atualiza uma variável global acumuladora (mediadaTurma) para futuros cálculos de
+                                desempenho coletivo e encapsula todas as informações individuais — nome, notas, média e situação —
+                                em um dicionário, que é então anexado à lista principal do sistema (<strong>dados.listadaTurma</strong>). O processo
+                                termina pausando a execução até que o usuário pressione "Enter", garantindo que as mensagens de
+                                confirmação sejam lidas antes de qualquer outra ação no programa.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item: Apagar() -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed conteudo-texto-botoes" type="button" data-bs-toggle="collapse" data-bs-target="#flush-apagar">
+                            <strong>Apagar()</strong>: Remove registros
+                        </button>
+                    </h2>
+                    <div id="flush-apagar" class="accordion-collapse collapse" data-bs-parent="#accordionFuncoes">
+                        <div class="accordion-body text-muted conteudo-texto-detalhes">
+                            <h6>Gerenciamento e remoção de registros.</h6>
+                            <p>
+                                Este trecho de código descreve uma função de gerenciamento e remoção de registros, projetada para excluir
+                                dados de alunos de forma individual ou coletiva, baseando-se em uma variável de controle <code>x</code>.
+                                Quando <code>x</code> é igual a 0, o programa executa uma exclusão seletiva: ele limpa a tela,
+                                percorre a lista principal (<strong>dados.listadaTurma</strong>) para exibir um menu numerado com os nomes dos alunos e
+                                solicita que o usuário escolha um <strong>índice</strong>; após a seleção, o código remove o aluno da lista,
+                                identifica sua média individual para subtraí-la do acumulador global mediadaTurma (mantendo o cálculo da
+                                média geral da turma atualizado) e confirma a deleção exibindo o nome do removido.
+                                Quando <code>x</code> é igual a 1, o código entra em um modo de exclusão total,
+                                solicitando uma confirmação do usuário; se a resposta for afirmativa (S/SIM),
+                                ele limpa completamente a lista de dados, enquanto uma resposta negativa
+                                interrompe o processo exibindo uma mensagem humorística em tom provocativo na cor lilás.
+                                O processo é finalizado com uma pausa de tela (<code>input</code>),
+                                garantindo que o usuário visualize o resultado da operação antes de prosseguir para o menu principal.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item:  Atualização de Dados() -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed conteudo-texto-botoes" type="button" data-bs-toggle="collapse" data-bs-target="#flush-atualizarDado">
+                            <strong> AtualizarDado()</strong>: Atualiza informações
+                        </button>
+                    </h2>
+                    <div id="flush-atualizarDado" class="accordion-collapse collapse" data-bs-parent="#accordionFuncoes">
+                        <div class="accordion-body text-muted conteudo-texto-detalhes">
+                            <h6>Edição e recalque de dados.</h6>
+                            <p>
+                                Este código descreve uma função de edição e recalque de dados, que permite atualizar informações específicas 
+                                de um aluno já cadastrado. O processo inicia listando os nomes dos alunos numerados, onde o usuário seleciona o 
+                                alvo da alteração através de um índice; em seguida, um segundo menu define se a mudança será no nome(1) ou nas notas (2) 
+                                . Se o nome for escolhido, a alteração é direta no dicionário; caso uma das notas seja alterada, 
+                                o código executa uma lógica de atualização de saldo, onde a média antiga é subtraída da variável global 
+                                mediadaTurma, uma nova média é calculada com base no novo valor, o acumulador global é atualizado com essa 
+                                nova média e a situação do aluno (APROVADO/REPROVADO) é reavaliada conforme o critério de nota 6. O script 
+                                garante a integridade dos cálculos matemáticos ao converter os valores para <code>float</code> e finaliza pausando a tela 
+                                para que o usuário confirme a conclusão da operação.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item:  Relatorio() -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed conteudo-texto-botoes" type="button" data-bs-toggle="collapse" data-bs-target="#flush-relatorio">
+                            <strong> Relatorio()</strong>: Gera relatórios
+                    </h2>
+                    <div id="flush-relatorio" class="accordion-collapse collapse" data-bs-parent="#accordionFuncoes">
+                        <div class="accordion-body text-muted conteudo-texto-detalhes">
+                            <h6>Exportação e persistência de dados</h6>
+                            <p>
+                                Este trecho de código descreve uma função de exportação e persistência de dados, responsável por gerar 
+                                relatórios externos em dois formatos distintos baseados na variável de controle <code>x</code>. O script identifica 
+                                automaticamente o usuário logado e a data atual, utilizando o <strong>parâmetro "txt"</strong> para criar ou atualizar um 
+                                arquivo de texto legível (Relatório.txt), onde detalha o desempenho individual de cada aluno e calcula a 
+                                média aritmética global da turma, classificando o rendimento coletivo como "APROVADO" ou "REPROVADO". Quando o 
+                                <strong>parâmetro é "python"</strong>, o código atua como um sistema de <strong>backup</strong> técnico, sobrescrevendo um arquivo dados.py com a 
+                                estrutura de lista e dicionários formatada nativamente para Python, permitindo que os dados sejam importados e 
+                                recuperados em execuções futuras do programa; ambos os processos incluem cabeçalhos de metadados que registram 
+                                quem realizou a modificação e em qual horário exato a operação ocorreu.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item:  Menu() -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed conteudo-texto-botoes" type="button" data-bs-toggle="collapse" data-bs-target="#flush-menu">
+                            <strong> Menu()</strong>: Controla o sistema
+                    </h2>
+                    <div id="flush-menu" class="accordion-collapse collapse" data-bs-parent="#accordionFuncoes">
+                        <div class="accordion-body text-muted conteudo-texto-detalhes">
+                            <h6>Menu interativo</h6>
+                            <p>
+                                Este trecho de código descreve a estrutura central de controle do programa, funcionando como um menu interativo 
+                                principal baseado em um laço de repetição infinito (while True). O objetivo deste bloco é gerenciar o fluxo de 
+                                navegação do usuário, utilizando uma interface visual personalizada com fontes estilizadas e cores no terminal 
+                                para oferecer sete opções distintas de operação.
+                                Cada opção do menu direciona o sistema para uma funcionalidade específica: as opções de 1 a 4 acionam as 
+                                funções de inclusão, consulta, geração de relatório em texto e atualização de dados; as opções 5 e 6 utilizam a 
+                                mesma função de exclusão, diferenciando-se pelo parâmetro (individual ou total); por fim, a opção 7 
+                                executa o salvamento automático do estado atual do sistema em formato Python antes de encerrar o programa 
+                                definitivamente através do comando <strong>break</strong>.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item: TrocardoArquivoDados() -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed conteudo-texto-botoes" type="button" data-bs-toggle="collapse" data-bs-target="#flush-Trocar-do-Arquivo-Dados">
+                            <strong>TrocardoArquivoDados()</strong>: Trocar o arquivo dados.py por um que foi baixado no site
+                        </button>
+                    </h2>
+                    <div id="flush-Trocar-do-Arquivo-Dados" class="accordion-collapse collapse" data-bs-parent="#accordionFuncoes">
+                        <div class="accordion-body text-muted conteudo-texto-detalhes">
+                            <h6>limpa o terminal (ex: utiliza o comando no Windows 'cls' ou no Linux'clear').</h6>
+                            <p>
+                                Essa estrutura serve para mover um arquivo chamado 
+                                dados.py da pasta de Downloads para a pasta atual do 
+                                script, garantindo que o código funcione tanto no 
+                                Windows quanto no Linux ou macOS. O bloco começa com o 
+                                comando try, que tenta executar uma instrução do 
+                                Windows: o comando move utiliza a variável de ambiente 
+                                %USERPROFILE% para localizar o arquivo na pasta de 
+                                Downloads do usuário e o ponto final (.) indica que ele 
+                                deve ser trazido para o diretório onde o programa está 
+                                rodando. Caso esse primeiro comando falhe — o que 
+                                acontece se o computador não for Windows —, o Python 
+                                entra no bloco except. Ali, ele tenta uma alternativa 
+                                para sistemas Unix (Linux/Mac), usando o comando mv e 
+                                o atalho ~ (til) para acessar a pasta pessoal do 
+                                usuário. Na prática, é uma estratégia de 
+                                compatibilidade entre sistemas, garantindo que o 
+                                arquivo seja movido independentemente da plataforma 
+                                em que o script estiver sendo executado.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Fim do Accordion -->
+
+         </div>
+    </section>
+
+
+        <!-- DOCUMENTAÇÃO -->
+        <section class="card shadow-sm mb-4 conteudo-texto-geral" id="documentacao">
+            <div class="card-body">
+                <h2 class="card-title">Integração com a Documentação</h2>
+                <p>
+                    O sistema está alinhado com a documentação em PDF,
+                    mantendo coerência entre teoria e prática.
+                </p>
+            </div>
+            <div class="container my-5">
+                <h2 class="text-center texto-importante">Visualizar Documentação</h2>
+                <div class="ratio ratio-16x9"> <!-- Classe do Bootstrap para manter a proporção -->
+                    <embed src="../Sistema-de-Gerenciamento-de-Alunos-em-Python.pdf" type="application/pdf" width="100%" height="600px" />
+                </div>
+            </div>
+
+            <!-- Botão no seu Menu -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPDF">
+            Ver PDF
+            </button>
+
+            <!-- Estrutura do Modal -->
+            <div class="modal fade" id="modalPDF" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl"> <!-- xl para o PDF ficar grande -->
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Manual do Sistema Python</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe src="../Sistema-de-Gerenciamento-de-Alunos-em-Python.pdf" width="100%" height="500px"></iframe>
+                </div>
+                </div>
+            </div>
+            </div>
+
+        </section>
+
+        <section class="card shadow-sm conteudo-texto-geral espaco" id="base_de_dados">
+            <div class="card-body">
+                <h4 class="centro texto-importante">Base de Dados</h4>
+                <p>
+                     Nesta etapa, você deverá criar um novo arquivo chamado 
+                     <code>dados.py</code>. Este arquivo será utilizado para 
+                     substituir a versão atual do sistema,permitindo a atualização 
+                     e a correta integração das informações
+                </p>
+                <!-- action aponta para o seu arquivo .php -->
+                    <form id="formAlunos" action="http://projetosteste.cu.ma/Gerador.php" method="POST">
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome do Aluno</label>
+                            <input type="text" name="nome" class="form-control" id="nome" required>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="nota1" class="form-label">Nota 1</label>
+                                <input type="number" name="nota1" step="0.1" class="form-control" id="nota1" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="nota2" class="form-label">Nota 2</label>
+                                <input type="number" name="nota2" step="0.1" class="form-control" id="nota2" required>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2 mt-3">
+                            <!-- Botão Limpar (Não envia o form) -->
+                            <button type="submit" name="acao" value="adicionar" class="btn btn-outline-secondary w-100" onclick="limparForm()">
+                                Adicionar mais um
+                            </button>
+                            <!-- Botão Enviar (Dispara o action para o PHP) -->
+                            <button type="submit" name="acao" value="finalizar" class="btn btn-success w-100">
+                                Finalizar e Enviar
+                            </button>
+                        </div>
+                    </form>
+                    <script>
+                        function limparForm() {
+                            document.getElementById('formAlunos').reset();
+                            document.getElementById('nome').focus();
+                        }
+                    </script>
+                                
+            </div>
+        </section>
+        <!-- CONCLUSÃO -->
+        <section class="card shadow-sm conteudo-texto-geral">
+            <div class="card-body">
+                <h2 class="card-title">Conclusão</h2>
+
+                <p>
+                    O projeto é uma base sólida para evoluções futuras.
+                </p>
+
+                <ul>
+                    <li>Interface gráfica</li>
+                    <li>Banco de dados</li>
+                    <li>Aplicações web</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white text-center py-3 conteudo-texto-geral">
+        <p class="mb-0">
+            Projeto acadêmico — Sistema de Gerenciamento de Alunos em Python
+        </p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+   
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+</body>
+</html>

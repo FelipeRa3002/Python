@@ -98,6 +98,9 @@ strong{
   .fundo-do-conteudo {
     background-color: var(--cor-quaternario)!important;
   }
+  .logo-girar{
+    display: none;
+  }
 }
 /*tela grande*/
 @media screen and (min-width: 1050px) {
@@ -107,4 +110,18 @@ strong{
     
 }
     
+}
+/*Mudança do dia 13/04/26*/
+.logo-girar{
+    width: 4%;
+    padding-left: 20px;
+    margin: 10px 40px;
+    animation: girar 2.5s linear infinite ;
+}
+#logo_makima_2{
+    width: 8%;
+}
+@keyframes girar{
+    from{ transform: rotate(0deg);}
+    to{ transform: rotate(360deg);}
 }

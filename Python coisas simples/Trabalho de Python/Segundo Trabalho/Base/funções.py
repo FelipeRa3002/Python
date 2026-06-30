@@ -260,7 +260,7 @@ def Relatorio(x):
                 mediadaTurma+=float(i['media'])
                 divisor+=1
             #mediadaTurma = mediadaTurma/divisor if divisor > 0 else 0.0
-            Kaiser.write(f"# Foi modificado no dia {data} às {datetime.now().strftime('%H:%M:%S')} pelo {user}\nlistadaTurma = [{texto}\n]\nmediadaTurmaDefinitiva= {mediadaTurma:.1f}")
+            Kaiser.write(f"# Foi modificado no dia {data} às {datetime.now().strftime('%H:%M:%S')} pelo {user}\nlistadaTurma = [{texto}\n]\nmediadaTurmaDefinitiva= {dados.mediadaTurmaDefinitiva:.1f}")
 
 
 

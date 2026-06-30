@@ -40,7 +40,7 @@ def TrocardoArquivoDados():
         system('mv ~/Downloads/dados.py .')
 
 if len(dados.listadaTurma) > 0 :
-    dados.mediadaTurmaDefinitiva=float(dados.mediadaTurmaDefinitiva)/len(dados.listadaTurma)
+    mediadaTurma=float(dados.mediadaTurmaDefinitiva)/len(dados.listadaTurma)
 mediadaTurma=0
 
 # Limpa a tela do terminal no Windows e, como alternativa, em outros sistemas.
@@ -62,12 +62,11 @@ def Inclusao():
     nota1 = float(input("\033[35mDigite a nota que o Aluno tirou na primeira prova: \033[0m"))
     nota2 = float(input("\033[35mDigite a nota que o Aluno tirou na segunda prova: \033[0m"))
     media = (nota1+nota2)/2
-    print(media)
-    input("Pressione Enter para continuar...")
-    situacao = "\033[34mAPROVADO\033[0m" if media>=6 else "\033[31mREPROVADO\033[0m"
-    mediadaTurma+=media
+    situacao = "APROVADO" if media>=6 else "REPROVADO"
+    dados.mediadaTurmaDefinitiva+=media
     conteudo = {'nome':nome,'nota1':nota1,'nota2':nota2,'media':media,'situação':situacao}
     dados.listadaTurma.append(conteudo)
+    mediadaTurma=float(dados.mediadaTurmaDefinitiva)/len(dados.listadaTurma)
     input("Pressione Enter para continuar...")
 
 
@@ -321,10 +320,10 @@ def Apagar(x):
         desicao=int(console.input(":broom::x: Digite o número que representa o nome do aluno que você deseja apagar: "))
         index = desicao
         dadosTemp = dados.listadaTurma[index]
+        dados.mediadaTurmaDefinitiva-=float(dados.listadaTurma[index]['media'])
         dados.listadaTurma.pop(index)
+        mediadaTurma=float(dados.mediadaTurmaDefinitiva)/len(dados.listadaTurma)
         print(f"O Aluno {dadosTemp['nome']} foi apagado :negative_squared_cross_mark:")
-        mediaApagada = dadosTemp['media']
-        mediadaTurma-= mediaApagada
     if x == 1:
         resposta = Confirm.ask("Você deseja continuar com a instalação?")
         if resposta:
@@ -376,10 +375,9 @@ def listar():
 def Menu():
     global mediadaTurma
     """
-    Aqui a mediaadaTurma vai receber o valor da mediadaTurmaDefinitiva, que já está dividido pelo tamanho da lista, 
-    então não precisa dividir de novo, porque se não vai dar um valor errado
+    Aqui a mediaadaTurma já foi calculado no início
     """
-    mediadaTurma = dados.mediadaTurmaDefinitiva
+    mediadaTurma = mediadaTurma
     menu = Panel(
             """
             ========================================== 

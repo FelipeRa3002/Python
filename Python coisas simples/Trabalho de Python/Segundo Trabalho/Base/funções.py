@@ -109,7 +109,7 @@ def Consultar():
         Aqui em baixo vai verficar se o nome que o usuário digitou está na lista de nomes, se estiver, vai mostrar as informações do aluno, 
         se não estiver, vai mostrar uma mensagem dizendo que não tem um aluno com esse nome
         """
-        if nome in listadeNome:
+        if len(listadeNome)>=1:
             tabela= Table()
             tabela.add_column("Nome", justify="center", style="green", no_wrap=True)
             tabela.add_column("Nota 1", justify="center", style="blue", no_wrap=True)
